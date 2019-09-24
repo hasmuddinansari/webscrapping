@@ -1,17 +1,17 @@
-import csv
-from bs4 import BeautifulSoup as soup
+import csv                              #data saving file.
+from bs4 import BeautifulSoup as soup  #import important libraries.
 from urllib.request import urlopen
-
+"""link of website."""
 my_url = 'https://www.flipkart.com/search?q=latest+phone+under+10000&sid=tyy%2C4io&as=on&as-show=on&otracker=AS_QueryStore_OrganicAutoSuggest_0_19_na_na_pr&otracker1=AS_QueryStore_OrganicAutoSuggest_0_19_na_na_pr&as-pos=0&as-type=RECENT&suggestionId=latest+phone+under+10000&requestId=f864e7d1-f1eb-4dfe-9faa-4ed62c7ba3dd&as-searchtext=latest%20phone%20under%20'
 
-uClient = urlopen(my_url)
-page_html = uClient.read() #reading html file from website
+uClient = urlopen(my_url)          
+page_html = uClient.read()      #reading html file from website
 uClient.close()
-page_soup = soup(page_html, "html.parser") #making a parser to target html page.
+page_soup = soup(page_html, "html.parser")  # making a parser to target html page.
 
-
+"""help to target css class,id or tag name"""
 containers = page_soup.findAll("div", {"class": "bhgxx2 col-12-12"})
-# print(len(containers))
+
 container = containers[0]
 
 #finding one product name;
